@@ -43,7 +43,6 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-print("OPENAI_API_KEY from .env:", os.getenv('OPENAI_API_KEY'))
 
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY', 'your-secret-key-here')
