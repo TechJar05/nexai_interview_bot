@@ -13,7 +13,7 @@ from services.tts_service import text_to_speech
 from services.visual_service import analyze_visual_response
 from services.cohere.followup_generator import generate_dynamic_follow_up
 from services.report.generator import generate_interview_report
-from services.report.file_manager import save_admin_report_txt
+# from services.report.file_manager import save_admin_report_txt
 from services.scoring_service import evaluate_response
 
 answer_bp = Blueprint('answer_bp', __name__)
