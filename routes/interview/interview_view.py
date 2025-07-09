@@ -22,7 +22,7 @@ def interview(token):
             session['id'] = match_id
 
             # Step 2: Get Resume & JD using match ID
-            resume_jd_url = f"https://nexai.qwiktrace.com/jobs/resume-jd-by-id/{match_id}/"
+            resume_jd_url = f"https://nexai.qwiktrace.com/api/jobs/resume-jd-by-id/{match_id}/"
             resume_jd_response = requests.get(resume_jd_url, timeout=30)
 
             if resume_jd_response.status_code == 200:

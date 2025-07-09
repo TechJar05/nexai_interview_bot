@@ -149,7 +149,7 @@ def generate_report():
     }
 
     try:
-        django_url = "https://nexai.qwiktrace.com/jobs/store-interview-report/"
+        django_url = "https://nexai.qwiktrace.com/api/jobs/store-interview-report/"
         django_response = requests.post(django_url, json=django_payload, headers={"Content-Type": "application/json"})
 
         if django_response.status_code == 201:
