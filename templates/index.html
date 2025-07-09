@@ -516,7 +516,7 @@
             $(this).html('<i class="fas fa-spinner fa-spin"></i> Starting...').prop('disabled', true);
 
             $.ajax({
-                url: '/jobs/interview/start_interview',
+                url: 'interview/jobs/interview/start_interview',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({
@@ -565,7 +565,7 @@
 function askQuestion() {
     if (!interviewInProgress || totalSeconds <= 0) return;
 
-    $.get('/jobs/interview/get_question', function(response) {
+    $.get('interview/jobs/interview/get_question', function(response) {
         if (response.status === 'completed' || totalSeconds <= 0) {
             interviewComplete();
         } else if (response.status === 'success') {
@@ -596,50 +596,7 @@ function askQuestion() {
             }
         }
 
-        // Process answer
-        // function processAnswer(answer) {
-        //     if (!interviewInProgress) return;
-
-        //     stopPauseDetection();
-
-        //     const video = document.getElementById('activeCameraFeed');
-        //     const canvas = document.createElement('canvas');
-        //     canvas.width = video.videoWidth;
-        //     canvas.height = video.videoHeight;
-        //     const ctx = canvas.getContext('2d');
-        //     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        //     const frameData = canvas.toDataURL('image/jpeg');
-
-        //     submittingAnswer = true;
-
-        //     $.ajax({
-        //         url: '/process_answer',
-        //         type: 'POST',
-        //         contentType: 'application/json',
-        //         data: JSON.stringify({
-        //             answer: answer,
-        //             frame: frameData
-        //         }),
-        //         success: function(response) {
-        //             submittingAnswer = false;
-        //             if (response.status === 'answer_processed') {
-        //                 currentAnswer = '';
-        //                 updateProgress(response.current_question, response.total_questions);
-        //                 currentQuestionNum = response.current_question + 1;
-
-        //                 if (response.interview_complete) {
-        //                     interviewComplete();
-        //                 } else {
-        //                     setTimeout(askQuestion, 1000);
-        //                 }
-        //             }
-        //         },
-        //         error: function(xhr) {
-        //             submittingAnswer = false;
-        //             alert('Error processing answer: ' + (xhr.responseJSON?.message || 'Unknown error'));
-        //         }
-        //     });
-        // }
+       
         function processAnswer(answer) {
     if (!interviewInProgress) return;
 
@@ -660,7 +617,7 @@ function askQuestion() {
     conversationBox.find(`.user-message[data-question="${currentQuestionNum}"][data-answer="current"]`).removeAttr('data-answer');
 
     $.ajax({
-        url: '/jobs/interview/process_answer',
+        url: 'interview/jobs/interview/process_answer',
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
@@ -752,6 +709,7 @@ function askQuestion() {
             }
         });
 
+      
         // End session button click handler
         // $('#endSessionBtn').click(function() {
         //     if (confirm("Are you sure you want to end the interview session?")) {
@@ -958,7 +916,7 @@ function showInterviewReport() {
     reportModal.show();
 
     $.ajax({
-        url: '/jobs/report/generate_report',
+        url: 'interview/jobs/report/generate_report',
         type: 'GET',
         success: function(response) {
             if (response.status === 'success') {
