@@ -1,0 +1,20 @@
+Interview Report for Anonymous
+Role: ""
+
+
+Interview Duration: 3m 17s
+Average Rating: 2.4/10
+Overall Performance: Poor
+
+Conversation Transcript with Feedback:
+Q1: Can you elaborate on the programming languages mentioned in your resume?
+Response: hello hello
+Q2: Which language are you most comfortable with?
+Response: comfortable with Python
+Q3: Have you worked on any projects using these languages?
+Response: I have work
+Q4: Can you provide examples of projects where you utilized Python and Java to solve complex problems?
+Response: in the machine learning price prediction project at the time of data handling data free processing  and data cleaning excluded data analysis of data where views  Python libraries
+Q5: How did you develop your problem-solving skills as mentioned in your resume?
+
+End of Report
