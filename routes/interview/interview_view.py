@@ -8,7 +8,7 @@ view_bp = Blueprint('view_bp', __name__)
 
 DJANGO_API_URL = Config.DJANGO_API_URL
 
-@view_bp.route('interview/<token>/')
+@view_bp.route('/<token>/')
 def interview(token):
     try:
         # Step 1: Get interview metadata from Django
@@ -60,3 +60,11 @@ def interview(token):
     except Exception as e:
         logger.error(f"❌ Exception during interview page load: {str(e)}")
         return render_template("error.html", message="⚠ Unexpected server error."), 500
+
+
+
+
+
+
+
+
