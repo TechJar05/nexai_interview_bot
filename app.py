@@ -83,7 +83,7 @@ from flask_session import Session
 import os
 import logging
 from logging.handlers import RotatingFileHandler
-
+from flask_cors import CORS
 from routes import register_routes
 from utils.helpers import init_interview_data
 
@@ -96,7 +96,7 @@ def create_app():
     session_dir = os.path.join(os.getcwd(), 'flask_session_data')
     os.makedirs(session_dir, exist_ok=True)
     app.config['SESSION_FILE_DIR'] = session_dir
-
+    CORS(app, supports_credentials=True)
     Session(app)
 
     logs_dir = os.path.join(os.getcwd(), 'logs')

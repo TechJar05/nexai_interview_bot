@@ -106,7 +106,7 @@ $(document).ready(function() {
     $('#generateReportBtn').prop('disabled', true).text('Generating...');
 
         $.ajax({
-            url: 'interview/report/generate_report',
+            url: 'report/generate_report',
             type: 'POST',
             success: function(response) {
                 $('#generateReportBtn').prop('disabled', false).text('Generate Report');
