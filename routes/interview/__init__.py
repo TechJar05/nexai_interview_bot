@@ -8,7 +8,7 @@ from .answer_processing import answer_bp
 from .interview_view import view_bp
 
 # Create main interview blueprint
-interview_bp = Blueprint('interview', __name__, url_prefix='/jobs/interview')
+interview_bp = Blueprint('interview', __name__, url_prefix='/interview/jobs')
 
 # Register sub-blueprints under /interview
 interview_bp.register_blueprint(start_bp)

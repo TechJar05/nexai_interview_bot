@@ -16,7 +16,7 @@ from utils.helpers import init_interview_data
 
 logger = logging.getLogger(__name__)
 
-report_bp = Blueprint('report_bp', __name__,url_prefix='/jobs/report')
+report_bp = Blueprint('report_bp', __name__,url_prefix='/interview/report')
 
 CONVERSATION_FILE = "interview_conversation.txt"
 PDF_OUTPUT_DIR = os.path.join(os.getcwd(), "reports")
