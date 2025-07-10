@@ -12,6 +12,7 @@
 from flask import Blueprint
 from .interview import interview_bp
 from .report import report_bp  # ✅ Add this
+from .interview import interview_bp 
 
 def register_routes(app):
     app.register_blueprint(interview_bp)
