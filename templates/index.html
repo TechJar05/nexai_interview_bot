@@ -916,7 +916,10 @@ function showInterviewReport() {
     reportModal.show();
 
     $.ajax({
+
         url: 'report/generate_report',
+
+
         type: 'GET',
         success: function(response) {
             if (response.status === 'success') {
