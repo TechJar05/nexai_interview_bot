@@ -4,7 +4,9 @@ import logging
 from config import Config
 
 logger = logging.getLogger(__name__)
-view_bp = Blueprint('view_bp', __name__)
+view_bp = Blueprint('view_bp', __name__,url_prefix='/interview')
+
+
 
 DJANGO_API_URL = Config.DJANGO_API_URL
 
