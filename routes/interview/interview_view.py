@@ -8,11 +8,12 @@ view_bp = Blueprint('view_bp', __name__)
 
 DJANGO_API_URL = Config.DJANGO_API_URL
 
-@view_bp.route('/interview/<token>/')
+@view_bp.route('/jobs/interview/<token>/')
 def interview(token):
     try:
         # Step 1: Get interview metadata from Django
         interview_url = f"{DJANGO_API_URL}{token}/"
+        print(f"🔍 Requesting interview metadata from: {interview_url}")
         logger.debug(f"🔍 Requesting interview data from: {interview_url}")
         response = requests.get(interview_url, timeout=30)
 
