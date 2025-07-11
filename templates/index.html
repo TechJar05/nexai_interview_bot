@@ -545,7 +545,7 @@
 function askQuestion() {
     if (!interviewInProgress || totalSeconds <= 0) return;
 
-    $.get('/get_question', function(response) {
+    $.get('/interview/get_question', function(response) {
         if (response.status === 'completed' || totalSeconds <= 0) {
             interviewComplete();
         } else if (response.status === 'success') {
