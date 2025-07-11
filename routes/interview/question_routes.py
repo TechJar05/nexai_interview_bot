@@ -17,7 +17,7 @@ MAX_FOLLOW_UPS = 3
 MAX_DURATION_MINUTES = 20
 
 
-@question_bp.route('/get_question', methods=['GET'])
+@question_bp.route('/interview/get_question', methods=['GET'])
 def get_question():
     logger.debug("Get question request received")
 

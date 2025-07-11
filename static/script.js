@@ -12,7 +12,7 @@ $(document).ready(function() {
         $(this).prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Starting...');
         
         $.ajax({
-            url: '/start_interview',
+            url: '/interview/start_interview',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
@@ -50,7 +50,7 @@ $(document).ready(function() {
         $('#submitAnswerBtn').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Submitting...');
         
         $.ajax({
-            url: '/submit_answer',
+            url: '/interview/submit_answer',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
@@ -83,7 +83,7 @@ $(document).ready(function() {
         $(this).prop('disabled', true).html('<i class="fas fa-microphone-alt-slash"></i> Recording...');
         
         $.ajax({
-            url: '/record_audio',
+            url: '/interview/record_audio',
             type: 'POST',
             success: function(response) {
                 if (response.status === 'success') {
@@ -107,7 +107,7 @@ $(document).ready(function() {
 
         $.ajax({
 
-            url: '/generate_report',
+            url: '/interview/generate_report',
    
             type: 'POST',
             success: function(response) {
@@ -181,7 +181,7 @@ $(document).ready(function() {
     // Helper functions
     function getNextQuestion() {
         $.ajax({
-            url: '/get_question',
+            url: '/interview/get_question',
             type: 'GET',
             success: function(response) {
                 if (response.status === 'completed') {

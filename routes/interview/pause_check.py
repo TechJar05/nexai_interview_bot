@@ -12,7 +12,7 @@ pause_bp = Blueprint('pause_bp', __name__)
 PAUSE_THRESHOLD = 40  # seconds
 
 
-@pause_bp.route('/check_pause', methods=['GET'])
+@pause_bp.route('/interview/check_pause', methods=['GET'])
 def check_pause():
     logger.debug("Check pause request received")
 

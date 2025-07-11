@@ -108,7 +108,7 @@ logger = logging.getLogger(__name__)
 
 report_bp = Blueprint('report_bp', __name__)
 
-@report_bp.route('/generate_report/', methods=['GET'])
+@report_bp.route('/interview/generate_report/', methods=['GET'])
 def generate_report():
     logger.info("Generate report request received")
     interview_data = session.get('interview_data', init_interview_data())

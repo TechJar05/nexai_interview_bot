@@ -18,7 +18,7 @@ def before_request():
         session['interview_data'] = init_interview_data()
     session.permanent = True  # Keeps session alive across browser restarts if configured
 
-@session_bp.route('/logout')
+@session_bp.route('/interview/logout')
 def logout():
     logger.info("Logout requested - clearing session")
     session.clear()
