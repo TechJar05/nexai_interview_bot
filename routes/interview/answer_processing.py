@@ -64,39 +64,73 @@ def process_answer():
     current_time = datetime.now().timestamp()
     last_frame_time = interview_data.get("last_frame_time", 0)
 
+    # if frame_data and (current_time - last_frame_time) > FRAME_CAPTURE_INTERVAL:
+    #     try:
+    #         # Safely decode base64 frame
+    #         if ',' in frame_data:
+    #             base64_str = frame_data.split(',')[1]
+    #         else:
+    #             base64_str = frame_data
+
+    #         if not base64_str.strip():
+    #             raise ValueError("Empty base64 frame string")
+
+    #         frame_bytes = base64.b64decode(base64_str)
+    #         frame_array = np.frombuffer(frame_bytes, dtype=np.uint8)
+
+    #         if frame_array.size == 0:
+    #             raise ValueError("Decoded frame array is empty")
+
+    #         frame = cv2.imdecode(frame_array, cv2.IMREAD_COLOR)
+
+    #         if frame is not None:
+    #             frame_base64 = process_frame_for_gpt4v(frame)
+    #             visual_feedback = analyze_visual_response(
+    #                 frame_base64,
+    #                 interview_data['conversation_history'][-3:]
+    #             )
+    #             if visual_feedback:
+    #                 interview_data['visual_feedback'].append(visual_feedback)
+    #                 interview_data['last_frame_time'] = current_time
+    #         else:
+    #             raise ValueError("OpenCV failed to decode the image")
+
+    #     except Exception as e:
+    #         logger.error(f"Error processing frame: {str(e)}", exc_info=True)
+
     if frame_data and (current_time - last_frame_time) > FRAME_CAPTURE_INTERVAL:
-        try:
-            # Safely decode base64 frame
-            if ',' in frame_data:
-                base64_str = frame_data.split(',')[1]
-            else:
-                base64_str = frame_data
+     try:
+        # Decode base64 frame safely
+        base64_str = frame_data.split(',')[1] if ',' in frame_data else frame_data
 
-            if not base64_str.strip():
-                raise ValueError("Empty base64 frame string")
-
+        if not base64_str.strip():
+            logger.warning("⚠ Empty frame received, skipping visual analysis.")
+        else:
             frame_bytes = base64.b64decode(base64_str)
             frame_array = np.frombuffer(frame_bytes, dtype=np.uint8)
 
             if frame_array.size == 0:
-                raise ValueError("Decoded frame array is empty")
-
-            frame = cv2.imdecode(frame_array, cv2.IMREAD_COLOR)
-
-            if frame is not None:
-                frame_base64 = process_frame_for_gpt4v(frame)
-                visual_feedback = analyze_visual_response(
-                    frame_base64,
-                    interview_data['conversation_history'][-3:]
-                )
-                if visual_feedback:
-                    interview_data['visual_feedback'].append(visual_feedback)
-                    interview_data['last_frame_time'] = current_time
+                logger.warning("⚠ Decoded frame array is empty, skipping visual feedback.")
             else:
-                raise ValueError("OpenCV failed to decode the image")
+                frame = cv2.imdecode(frame_array, cv2.IMREAD_COLOR)
 
-        except Exception as e:
-            logger.error(f"Error processing frame: {str(e)}", exc_info=True)
+                if frame is not None:
+                    frame_base64 = process_frame_for_gpt4v(frame)
+                    visual_feedback = analyze_visual_response(
+                        frame_base64,
+                        interview_data['conversation_history'][-3:]
+                    )
+                    if visual_feedback:
+                        interview_data['visual_feedback'].append(visual_feedback)
+                        interview_data['last_frame_time'] = current_time
+                else:
+                    logger.warning("⚠ OpenCV failed to decode frame, skipping.")
+     except Exception as e:
+        logger.error(f"❌ Error processing frame: {str(e)}", exc_info=True)
+
+
+
+
 
     # Rating (no length check — evaluates based on meaning & depth)
     rating = evaluate_response(
