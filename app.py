@@ -135,5 +135,9 @@ def create_app():
     return app
 
 if __name__ == '__main__':
+
     app = create_app()
+
+    for rule in app.url_map.iter_rules():
+     print(f"{rule.rule} → {rule.endpoint} [{', '.join(rule.methods)}]")
     app.run(debug=True, use_reloader=False)

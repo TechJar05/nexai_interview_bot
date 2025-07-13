@@ -11,7 +11,7 @@ from services.cohere.question_generator import generate_initial_questions  # ✅
 start_bp = Blueprint('start_bp', __name__)
 logger = logging.getLogger(__name__)
 
-@start_bp.route('/interview/start_interview', methods=['POST'])
+@start_bp.route('/start_interview', methods=['POST'])
 def start_interview():
     logger.info("Interview start request received")
 

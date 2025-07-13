@@ -23,7 +23,7 @@ FRAME_CAPTURE_INTERVAL = 5
 MAX_FOLLOW_UPS = 3
 
 
-@answer_bp.route('/interview/process_answer', methods=['POST'])
+@answer_bp.route('/process_answer', methods=['POST'])
 def process_answer():
     logger.info("Process answer request received")
     interview_data = session.get('interview_data', init_interview_data())
