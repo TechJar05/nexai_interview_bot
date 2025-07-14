@@ -12,7 +12,7 @@ $(document).ready(function() {
         $(this).prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Starting...');
         
         $.ajax({
-            url: '/interview/start_interview',
+            url: '/ibot/interview/start_interview',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
@@ -50,7 +50,7 @@ $(document).ready(function() {
         $('#submitAnswerBtn').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Submitting...');
         
         $.ajax({
-            url: '/interview/submit_answer',
+            url: '/ibot/interview/submit_answer',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
@@ -83,7 +83,7 @@ $(document).ready(function() {
         $(this).prop('disabled', true).html('<i class="fas fa-microphone-alt-slash"></i> Recording...');
         
         $.ajax({
-            url: '/interview/record_audio',
+            url: '/ibot/interview/record_audio',
             type: 'POST',
             success: function(response) {
                 if (response.status === 'success') {
@@ -107,7 +107,7 @@ $(document).ready(function() {
 
         $.ajax({
 
-            url: '/interview/generate_report',
+            url: '/ibot/interview/generate_report',
    
             type: 'POST',
             success: function(response) {
@@ -181,7 +181,7 @@ $(document).ready(function() {
     // Helper functions
     function getNextQuestion() {
         $.ajax({
-            url: '/interview/get_question',
+            url: '/ibot/interview/get_question',
             type: 'GET',
             success: function(response) {
                 if (response.status === 'completed') {
