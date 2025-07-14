@@ -1,12 +1,12 @@
 
 
 
-# from flask import Blueprint, request, jsonify, session
-# from datetime import datetime, timezone
-# import logging
+from flask import Blueprint, request, jsonify, session
+from datetime import datetime, timezone
+import logging
 
-# from utils.helpers import init_interview_data
-# from services.cohere.question_generator import generate_initial_questions  # ✅ updated import (migrated from cohere)
+from utils.helpers import init_interview_data
+from services.cohere.question_generator import generate_initial_questions  # ✅ updated import (migrated from cohere)
 
 # start_bp = Blueprint('start_bp', __name__)
 # logger = logging.getLogger(__name__)
@@ -86,7 +86,7 @@
 from flask import Blueprint, request, session, jsonify
 from datetime import datetime, timezone
 import logging
-
+from utils.helpers import init_interview_data
 start_bp = Blueprint('start', __name__)
 logger = logging.getLogger(__name__)
 
