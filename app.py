@@ -92,11 +92,14 @@ def create_app():
     session_dir = os.path.join(os.getcwd(), 'flask_session_data')
     os.makedirs(session_dir, exist_ok=True)
     app.config['SESSION_FILE_DIR'] = session_dir
+    app.config['SESSION_COOKIE_SAMESITE'] = "None"
+    app.config['SESSION_COOKIE_SECURE'] = True
 
     # ✅ CORS: allow React frontend to access APIs with cookies
     CORS(app, supports_credentials=True, origins=[
         "http://localhost:5173",               # local React
-        "https://your-react-domain.com",       # deployed React domain
+        "https://nexai.qwiktrace.com",       # deployed React domain
+        "https://nexai.qwiktrace.com/ibot",       # deployed React domain
     ])
 
     Session(app)
