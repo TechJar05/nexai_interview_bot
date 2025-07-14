@@ -107,7 +107,7 @@ $(document).ready(function() {
 
         $.ajax({
 
-            url: '/ibot/interview/generate_report',
+            url: '/ibot/interview/generate_report/',
    
             type: 'POST',
             success: function(response) {
