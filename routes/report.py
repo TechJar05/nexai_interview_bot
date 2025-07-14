@@ -106,7 +106,8 @@ from utils.helpers import init_interview_data
 
 logger = logging.getLogger(__name__)
 
-report_bp = Blueprint('report_bp', __name__, url_prefix='/ibot//interview')
+report_bp = Blueprint('report_bp', __name__, url_prefix='/ibot/interview')
+
 
 @report_bp.route('/generate_report/', methods=['GET'])
 def generate_report():
